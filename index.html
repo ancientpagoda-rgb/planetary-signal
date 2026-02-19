@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Planetary Signal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Planetary Signal</h1>
+        <p>Ambient sound driven by space weather, global weather, and markets.</p>
+      </header>
+
+      <main>
+        <section id="controls">
+          <button id="start-audio">Start</button>
+          <button id="stop-audio" disabled>Stop</button>
+
+          <fieldset>
+            <legend>Data Sources</legend>
+            <label>
+              <input type="checkbox" id="source-space" checked />
+              Space weather
+            </label>
+            <label>
+              <input type="checkbox" id="source-weather" checked />
+              Global weather
+            </label>
+            <label>
+              <input type="checkbox" id="source-markets" checked />
+              Markets
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Preset</legend>
+            <select id="preset-select">
+              <option value="default">Default</option>
+              <option value="calm">Calm skies</option>
+              <option value="storm">Storm watch</option>
+            </select>
+          </fieldset>
+        </section>
+
+        <section id="status">
+          <h2>Status</h2>
+          <div id="status-text">Idle</div>
+          <div id="data-bars">
+            <div class="bar">
+              <span>Space</span>
+              <div class="bar-track"><div id="bar-space" class="bar-fill"></div></div>
+            </div>
+            <div class="bar">
+              <span>Weather</span>
+              <div class="bar-track"><div id="bar-weather" class="bar-fill"></div></div>
+            </div>
+            <div class="bar">
+              <span>Markets</span>
+              <div class="bar-track"><div id="bar-markets" class="bar-fill"></div></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
