@@ -1,70 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Planetary Signal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles/main.css" />
-  </head>
-  <body>
-    <div id="app">
-      <header>
-        <h1>Planetary Signal</h1>
-        <p>Ambient sound driven by space weather, global weather, and markets.</p>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planetary Signal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Planetary Signal</h1>
+      <p class="tagline">Ambient soundscapes driven by live cosmic, planetary, and human data.</p>
+    </header>
 
-      <main>
-        <section id="controls">
-          <button id="start-audio">Start</button>
-          <button id="stop-audio" disabled>Stop</button>
+    <section class="controls" aria-label="Audio controls">
+      <div class="transport">
+        <button id="startButton">Start Audio</button>
+        <button id="stopButton" disabled>Stop</button>
+      </div>
+      <div class="layers">
+        <h2>Layers</h2>
+        <label>
+          <input type="checkbox" id="cosmicLayerToggle" checked />
+          Cosmic Layer
+        </label>
+        <label>
+          <input type="checkbox" id="planetaryLayerToggle" checked />
+          Planetary Layer
+        </label>
+        <label>
+          <input type="checkbox" id="humanLayerToggle" checked />
+          Human Systems Layer
+        </label>
+      </div>
+    </section>
 
-          <fieldset>
-            <legend>Data Sources</legend>
-            <label>
-              <input type="checkbox" id="source-space" checked />
-              Space weather
-            </label>
-            <label>
-              <input type="checkbox" id="source-weather" checked />
-              Global weather
-            </label>
-            <label>
-              <input type="checkbox" id="source-markets" checked />
-              Markets
-            </label>
-          </fieldset>
+    <section class="status" aria-label="Data status">
+      <h2>Data Feeds</h2>
+      <ul>
+        <li>Cosmic: <span id="cosmicStatus">idle</span></li>
+        <li>Planetary: <span id="planetaryStatus">idle</span></li>
+        <li>Human Systems: <span id="humanStatus">idle</span></li>
+      </ul>
+      <p class="note">Audio starts only after you press <strong>Start Audio</strong>. Data updates every few minutes.</p>
+    </section>
 
-          <fieldset>
-            <legend>Preset</legend>
-            <select id="preset-select">
-              <option value="default">Default</option>
-              <option value="calm">Calm skies</option>
-              <option value="storm">Storm watch</option>
-            </select>
-          </fieldset>
-        </section>
+    <footer>
+      <p>V1 · Ambient data sonification experiment.</p>
+    </footer>
+  </main>
 
-        <section id="status">
-          <h2>Status</h2>
-          <div id="status-text">Idle</div>
-          <div id="data-bars">
-            <div class="bar">
-              <span>Space</span>
-              <div class="bar-track"><div id="bar-space" class="bar-fill"></div></div>
-            </div>
-            <div class="bar">
-              <span>Weather</span>
-              <div class="bar-track"><div id="bar-weather" class="bar-fill"></div></div>
-            </div>
-            <div class="bar">
-              <span>Markets</span>
-              <div class="bar-track"><div id="bar-markets" class="bar-fill"></div></div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <script type="module" src="js/main.js"></script>
-  </body>
+  <script type="module" src="app.js"></script>
+</body>
 </html>

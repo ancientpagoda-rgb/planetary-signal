@@ -131,6 +131,12 @@ select {
 #status-text {
   font-size: 0.9rem;
   color: var(--muted);
+  margin-bottom: 0.25rem;
+}
+
+.status-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
   margin-bottom: 0.75rem;
 }
 

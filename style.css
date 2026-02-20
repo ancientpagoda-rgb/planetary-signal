@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1c2a3a 0, #050710 60%, #000000 100%);
+  color: #f5f7ff;
+}
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  color: #c0c4ff;
+  font-size: 0.95rem;
+}
+
+.controls {
+  background: rgba(9, 14, 30, 0.85);
+  border: 1px solid rgba(123, 163, 255, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.transport {
+  display: flex;
+  gap: 0.75rem;
+}
+
+button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+}
+
+#startButton {
+  background: linear-gradient(135deg, #3fd1ff, #8b5bff);
+  color: #050710;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(144, 200, 255, 0.35);
+}
+
+#startButton:disabled {
+  cursor: default;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+#stopButton {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e3e5ff;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.layers h2,
+.status h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.layers label {
+  display: block;
+  font-size: 0.9rem;
+  color: #d3d7ff;
+  margin-bottom: 0.25rem;
+}
+
+.layers input[type="checkbox"] {
+  margin-right: 0.4rem;
+}
+
+.status {
+  margin-top: 1.75rem;
+  background: rgba(5, 9, 20, 0.85);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(93, 131, 222, 0.3);
+}
+
+.status ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.status li {
+  margin-bottom: 0.25rem;
+}
+
+.status span {
+  color: #7dd0ff;
+}
+
+.note {
+  font-size: 0.8rem;
+  color: #9da3d9;
+}
+
+footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #7b81b4;
+}
+
+@media (min-width: 720px) {
+  .controls {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: flex-start;
+  }
+}

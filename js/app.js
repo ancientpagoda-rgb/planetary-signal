@@ -11,7 +11,7 @@ import {
   smooth,
 } from './data/normalize.js';
 import { computeAudioParams } from './mapping/mappingEngine.js';
-import { updateBars, setStatus } from './ui/visualization.js';
+import { updateBars, setStatus, setBtcStatus } from './ui/visualization.js';
 import { setupControls, getControlState } from './ui/controls.js';
 import { POLL_INTERVAL_MS } from './util/constants.js';
 
@@ -19,6 +19,7 @@ let mixerInitialized = false;
 let spaceState = null;
 let weatherState = null;
 let marketsState = null;
+let lastMarketsRaw = null;
 
 export function initApp() {
   const startBtn = document.getElementById('start-audio');
@@ -81,6 +82,7 @@ async function updateFromData() {
     if (marketsRaw) {
       const norm = normalizeMarkets(marketsRaw);
       marketsState = smooth(marketsState, norm);
+      lastMarketsRaw = marketsRaw;
     }
 
     const params = computeAudioParams(
@@ -97,6 +99,8 @@ async function updateFromData() {
       weather: weatherState?.globalStorminess ?? 0,
       markets: marketsState?.volatility ?? 0,
     });
+
+    setBtcStatus(lastMarketsRaw);
 
     setStatus('Last update: ' + new Date().toLocaleTimeString());
   } catch (err) {

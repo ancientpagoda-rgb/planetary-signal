@@ -12,6 +12,7 @@ export async function fetchMarkets() {
     const data = await res.json();
     const btc = data.bitcoin || {};
 
+    const price = Number(btc.usd ?? 0);
     const priceChange = Number(btc.usd_24h_change ?? 0); // % change over 24h
     const volume24h = Number(btc.usd_24h_vol ?? 0);      // 24h volume in USD
 
@@ -31,6 +32,11 @@ export async function fetchMarkets() {
       volatility,
       trend,
       volume_intensity: volumeIntensity,
+
+      // extra fields for UI
+      btc_price_usd: price,
+      btc_change_24h_pct: priceChange,
+      btc_volume_24h_usd: volume24h,
     };
   } catch (err) {
     console.error('fetchMarkets error, falling back to static JSON:', err);
